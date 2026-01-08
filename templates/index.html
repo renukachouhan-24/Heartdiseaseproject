@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff4b2b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff416c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <p>Please enter the following details:</p>
+
+        <form action="/predict" method="post">
+            <input type="number" name="age" placeholder="Age (e.g. 52)" required step="any">
+            <input type="number" name="sex" placeholder="Sex (1=Male, 0=Female)" required>
+            <input type="number" name="cp" placeholder="Chest Pain Type (0-3)" required>
+            <input type="number" name="trestbps" placeholder="Resting Blood Pressure" required step="any">
+            <input type="number" name="chol" placeholder="Cholesterol" required step="any">
+            <input type="number" name="fbs" placeholder="Fasting Blood Sugar (1=True, 0=False)" required>
+            <input type="number" name="restecg" placeholder="Resting ECG (0-2)" required>
+            <input type="number" name="thalach" placeholder="Max Heart Rate" required step="any">
+            <input type="number" name="exang" placeholder="Exercise Induced Angina (1=Yes, 0=No)" required>
+            <input type="number" name="oldpeak" placeholder="ST Depression (e.g. 2.3)" required step="any">
+            <input type="number" name="slope" placeholder="Slope of ST Segment (0-2)" required>
+            <input type="number" name="ca" placeholder="Number of Major Vessels (0-4)" required>
+            <input type="number" name="thal" placeholder="Thalassemia (0-3)" required>
+
+            <button type="submit">Predict Now</button>
+        </form>
+
+        <!-- <div class="result">
+            <p class="prediction-result" style="color: {{color if color else 'black'}}">
+                {{prediction_text}}
+            </p>
+        </div> -->
+        <div class="result">
+            {% if color == 'red' %}
+            <p style="color: red;">{{ prediction_text }}</p>
+            {% elif color == 'green' %}
+            <p style="color: green;">{{ prediction_text }}</p>
+            {% else %}
+            <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
